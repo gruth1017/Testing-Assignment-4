@@ -18,8 +18,8 @@ class LibraryTest {
     private static User user1;
     private static User user2;
 
-    @BeforeAll
-    static void setUp() {
+    @BeforeEach
+    void setUp() {
         library = new Library();
         book1 = new Book("Java Programming", "Author A", "ISBN123");
         book2 = new Book("Data Structures", "Author B", "ISBN456");
