@@ -1,6 +1,7 @@
 package org.example;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -8,12 +9,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
 
-    private User user1;
-    private User user2;
-    private Book book1;
+    private static User user1;
+    private static User user2;
+    private static Book book1;
 
-    @BeforeEach
-    void setUp() {
+    @BeforeAll
+    static void setUp() {
         user1 = new User("Steve Harvey", "User001");
         user2 = new User("Jim Carrey", "User002");
         book1 = new Book("Java Programming", "Author A", "ISBN123");

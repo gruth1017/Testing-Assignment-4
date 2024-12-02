@@ -2,6 +2,8 @@ package org.example;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -10,14 +12,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class LibraryTest {
 
-    private Library library;
-    private Book book1;
-    private Book book2;
-    private User user1;
-    private User user2;
+    private static Library library;
+    private static Book book1;
+    private static Book book2;
+    private static User user1;
+    private static User user2;
 
-    @BeforeEach
-    void setUp() {
+    @BeforeAll
+    static void setUp() {
         library = new Library();
         book1 = new Book("Java Programming", "Author A", "ISBN123");
         book2 = new Book("Data Structures", "Author B", "ISBN456");
@@ -173,12 +175,19 @@ class LibraryTest {
     }
 
     @Test
-    void getAverageBooksPerUserTest() {
+    @DisplayName("Test getAverageBooksPerUser")
+    void averageBooksPerUserWithZeroUsers() {
         library.addBook(book1);
         library.addBook(book2);
 
         assertEquals(0.0, library.getAverageBooksPerUser());
+    }
 
+    @Test
+    @DisplayName("Test getAverageBooksPerUser")
+    void getAverageBooksPerUserTest() {
+        library.addBook(book1);
+        library.addBook(book2);
         library.registerUser(user1);
         library.registerUser(user2);
 
